@@ -1,7 +1,7 @@
-package actors
+package actors.analyzingactors
 
+import actors.TweetAnalyzer
 import akka.actor.Props
-
 import com.danielasfregola.twitter4s.entities.Tweet
 
 object OccurrencesCounter{
@@ -13,8 +13,9 @@ object OccurrencesCounter{
 
 class OccurrencesCounter(val keyword: String) extends TweetAnalyzer {
 
-  import OccurrencesCounter._
   import java.util.concurrent.atomic._
+
+  import OccurrencesCounter._
 
   private val counter = new AtomicInteger(0)
 

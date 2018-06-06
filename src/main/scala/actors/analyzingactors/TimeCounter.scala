@@ -1,5 +1,6 @@
-package actors
+package actors.analyzingactors
 
+import actors.TweetAnalyzer
 import akka.actor.Props
 import com.danielasfregola.twitter4s.entities.Tweet
 import scala.concurrent.ExecutionContext.Implicits.global
@@ -23,8 +24,10 @@ object TimeCounter{
 
 class TimeCounter(val timer_sec: Int) extends TweetAnalyzer {
 
-  import TimeCounter._
   import java.util.concurrent.atomic._
+
+  import TimeCounter._
+
   import scala.concurrent.duration._
 
   private val counter = new AtomicInteger(0)
@@ -53,7 +56,5 @@ class TimeCounter(val timer_sec: Int) extends TweetAnalyzer {
   override def returnResults() : Map[String,AnyVal] = {
     Map( "result" -> lastSecCountValue.intValue())
   }
-
-
 
 }
