@@ -9,7 +9,7 @@ import scala.concurrent.ExecutionContext.Implicits.global
 object TweetLangSeparator{
 
   def props(timer_sec:Int): Props =
-    Props(new TimeCounter(timer_sec))
+    Props(new TweetLangSeparator(timer_sec))
 
   val introduction = "Languages of tweet with given keyword"
 }
@@ -40,8 +40,7 @@ class TweetLangSeparator(val timer_sec: Int) extends TweetAnalyzer {
   }
 
   override def returnResults() : Map[String,AnyVal] = {
-    Map( "HAHAH" -> 1321)
-    //langMap.mapValues[Int]{ case (_:Int,actual:Int) => actual }.toMap
+    langMap.mapValues[Int]{ case (_:Int,actual:Int) => actual }.toMap
   }
 
 }

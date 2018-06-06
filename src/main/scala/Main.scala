@@ -16,7 +16,7 @@ object Main{
     // Create the StreamingClient actor
     val streamingClient: ActorRef = system.actorOf(StreamingClient.props(), "streamingActor")
 
-    val analyzerClient: ActorRef = system.actorOf(OccurrencesCounter.props("1"), "analyzerActor")
+    val analyzerClient: ActorRef = system.actorOf(TweetLangSeparator.props(1), "analyzerActor")
 
     val client: ActorRef = system.actorOf(Customer.props(analyzerClient), "clientActor")
 
