@@ -1,5 +1,7 @@
 package actors
 
+import java.util.Calendar
+
 import actors.TweetAnalyzer.ReturnAnalysisResults
 import akka.actor.{Actor, ActorRef, Props}
 
@@ -14,6 +16,8 @@ object Customer{
 
 class Customer(val actor:ActorRef) extends Actor{
   import Customer._
+  import context._
+  import scala.concurrent.duration._
 
 
   def receive: PartialFunction[Any, Unit] = {
@@ -22,11 +26,11 @@ class Customer(val actor:ActorRef) extends Actor{
         actor ! ReturnAnalysisResults
 
     case message  =>
+      system.scheduler.scheduleOnce(1.seconds , actor, ReturnAnalysisResults)
+      val currentMinute = Calendar.getInstance().getTime
       println("")
-      println("==== "+message.toString+" ====")
+      println("Time: "+ currentMinute+ " ==== "+message.toString+" ====")
       println("")
-      Thread.sleep(1000)
-      actor ! ReturnAnalysisResults
   }
 
 }

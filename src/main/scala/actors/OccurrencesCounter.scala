@@ -18,17 +18,19 @@ class OccurrencesCounter(val keyword: String) extends TweetAnalyzer {
 
   private val counter = new AtomicInteger(0)
 
-  def analysisMethod(tweet : Tweet): Unit ={
+  override def analysisMethod(tweet : Tweet): Unit ={
     counter.getAndIncrement()
     ()
   }
 
-  def introduceYourself() : String = {
+  override def introduceYourself() : String = {
     introduction+ " "+ keyword
   }
 
-  def returnResults() : Map[String,AnyVal] = {
+  override def returnResults() : Map[String,AnyVal] = {
     Map(keyword -> counter.intValue())
   }
+
+  override def tickHandling(): Unit = {}
 
 }

@@ -1,5 +1,5 @@
 import actors.Customer.Perform
-import actors.{Customer, OccurrencesCounter, StreamingClient}
+import actors.{Customer, StreamingClient, TimeCounter}
 import akka.actor.{ActorRef, ActorSystem}
 import actors.StreamingClient._
 
@@ -15,12 +15,12 @@ object Main{
     // Create the StreamingClient actor
     val streamingClient: ActorRef = system.actorOf(StreamingClient.props(), "streamingActor")
 
-    val analyzerClient: ActorRef = system.actorOf(OccurrencesCounter.props("Hello"), "analyzerActor")
+    val analyzerClient: ActorRef = system.actorOf(TimeCounter.props(1), "analyzerActor")
 
     val client: ActorRef = system.actorOf(Customer.props(analyzerClient), "clientActor")
 
     //#main-send-messages
-    streamingClient ! DistributeTweetToAnalyze("Hello",analyzerClient)
+    streamingClient ! DistributeTweetToAnalyze("Trump",analyzerClient)
     client ! Perform
 
   }

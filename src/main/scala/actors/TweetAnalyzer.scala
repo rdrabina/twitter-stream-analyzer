@@ -12,6 +12,7 @@ object TweetAnalyzer{
 
   case object ReturnAnalysisResults
 
+  case object Tick
 }
 
 abstract class TweetAnalyzer extends Actor{
@@ -24,6 +25,8 @@ abstract class TweetAnalyzer extends Actor{
 
   def returnResults() : Map[String,AnyVal]
 
+  def tickHandling() : Unit
+
   def receive: PartialFunction[Any, Unit] = {
     case IntroduceYourself =>
       sender() ! introduceYourself()
@@ -33,6 +36,9 @@ abstract class TweetAnalyzer extends Actor{
 
     case AnalyzeTweet(tweet: Tweet) =>
       analysisMethod(tweet)
+
+    case Tick =>
+      tickHandling()
   }
 
 }
