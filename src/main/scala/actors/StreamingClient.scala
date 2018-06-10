@@ -50,18 +50,21 @@ class StreamingClient(private val twitterStreamingClient: TwitterStreamingClient
 
   def receive: PartialFunction[Any, Unit] = {
     case PrintSampleStream =>
+      sender() ! "Ok"
       twitterStreamingClient
         .sampleStatuses(
           stall_warnings = true
         )(TwitterStreamProcessor.printTweetText)
 
     case FilterTweetsByKeyword(keyword) =>
+      sender() ! keyword
       twitterStreamingClient
         .filterStatuses(
           tracks = Seq(keyword)
         )(TwitterStreamProcessor.printTweetText)
 
     case DistributeTweetToAnalyze(keyword,analyzers) =>
+      sender() ! keyword
       twitterStreamingClient
       .filterStatuses(
         tracks = Seq(keyword)

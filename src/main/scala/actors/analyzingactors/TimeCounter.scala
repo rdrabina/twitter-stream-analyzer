@@ -1,8 +1,10 @@
 package actors.analyzingactors
 
 import actors.TweetAnalyzer
+import actors.TweetAnalyzer.Tack
 import akka.actor.Props
 import com.danielasfregola.twitter4s.entities.Tweet
+
 import scala.concurrent.ExecutionContext.Implicits.global
 
 object TimeCounter{
@@ -41,6 +43,7 @@ class TimeCounter(val timer_sec: Int) extends TweetAnalyzer {
   override def tickHandling(): Unit = {
     val tmp = counter.getAndSet(0)
     lastSecCountValue.set(tmp)
+    sender ! Tack
     ()
   }
 

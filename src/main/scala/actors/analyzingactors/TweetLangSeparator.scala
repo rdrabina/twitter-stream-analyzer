@@ -1,8 +1,10 @@
 package actors.analyzingactors
 
 import actors.TweetAnalyzer
+import actors.TweetAnalyzer.Tack
 import akka.actor.Props
 import com.danielasfregola.twitter4s.entities.Tweet
+
 import scala.concurrent.ExecutionContext.Implicits.global
 
 
@@ -31,6 +33,7 @@ class TweetLangSeparator(val timer_sec: Int) extends TweetAnalyzer {
 
   override def tickHandling(): Unit = {
     langMap.transform{ case (_,(prev:Int,_:Int)) => (0,prev) }
+    sender ! Tack
     ()
   }
 

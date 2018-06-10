@@ -1,6 +1,7 @@
 package actors.analyzingactors
 
 import actors.TweetAnalyzer
+import actors.TweetAnalyzer.Tack
 import akka.actor.Props
 import com.danielasfregola.twitter4s.entities.Tweet
 
@@ -32,6 +33,6 @@ class OccurrencesCounter(val keyword: String) extends TweetAnalyzer {
     Map(keyword -> counter.intValue())
   }
 
-  override def tickHandling(): Unit = {}
+  override def tickHandling(): Unit = {sender ! Tack ; () }
 
 }

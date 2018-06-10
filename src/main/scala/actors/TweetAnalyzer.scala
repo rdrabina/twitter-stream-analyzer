@@ -13,6 +13,8 @@ object TweetAnalyzer{
   case object ReturnAnalysisResults
 
   case object Tick
+
+  case object Tack
 }
 
 abstract class TweetAnalyzer extends Actor{
@@ -39,6 +41,8 @@ abstract class TweetAnalyzer extends Actor{
 
     case Tick =>
       tickHandling()
+
+    case Tack =>
   }
 
 }
