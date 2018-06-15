@@ -10,7 +10,7 @@ import scala.io.StdIn._
 object Main{
 
   def main(args: Array[String]) {
-    val l = new GUI
+    val gui = new GUI
   }
 }
 
