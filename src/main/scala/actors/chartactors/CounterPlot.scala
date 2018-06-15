@@ -21,7 +21,6 @@ class CounterPlot(val timePeriod:Int, val keyWord:String) extends Actor {
   def receive: PartialFunction[Any, Unit] = {
     case StartPlot =>
       chart.show()
-        println("xd")
     case message: Map[String, AnyVal] =>
       system.scheduler.scheduleOnce(timePeriod.seconds) {
         val y: Number = message(keyWord).asInstanceOf[Number]
