@@ -14,5 +14,6 @@ libraryDependencies ++= Seq(
   "org.scalatest" %% "scalatest" % "3.0.5" % "test",
   "com.danielasfregola" %% "twitter4s" % "5.5",
   "ch.qos.logback" % "logback-classic" % "1.2.3",
-  "com.github.wookietreiber" %% "scala-chart" % "latest.integration"
+  "com.github.wookietreiber" %% "scala-chart" % "latest.integration",
+  "org.scala-lang" %% "scala-swing" % "2.11.0-M7"
 )
