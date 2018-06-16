@@ -1,6 +1,8 @@
 package actors.chartactors
 
 
+import javax.swing.JFrame
+
 import actors.chartactors.TimeCounterPlot.StartPlot
 import akka.actor.{Actor, Props}
 

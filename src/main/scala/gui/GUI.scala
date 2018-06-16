@@ -23,6 +23,7 @@ class GUI extends JFrame{
   val pt: String = "Portuguese"
   val pl: String = "Polish"
   val de: String = "German"
+  
 
   val titleLabel: JLabel = new JLabel("Choose analysis specifications")
   titleLabel.setForeground(Color.blue)

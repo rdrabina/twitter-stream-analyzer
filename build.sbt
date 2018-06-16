@@ -15,5 +15,5 @@ libraryDependencies ++= Seq(
   "com.danielasfregola" %% "twitter4s" % "5.5",
   "ch.qos.logback" % "logback-classic" % "1.2.3",
   "com.github.wookietreiber" %% "scala-chart" % "latest.integration",
-  "org.scala-lang" %% "scala-swing" % "2.11.0-M7"
+  "org.scala-lang" % "scala-swing" % "2.10+"
 )
